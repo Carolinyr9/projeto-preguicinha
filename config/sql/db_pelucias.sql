@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `db_pelucias`
 --
+create database db_pelucias;
+use db_pelucias;
 
 -- --------------------------------------------------------
 
