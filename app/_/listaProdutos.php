@@ -1,5 +1,4 @@
 <?php
-//include_once 'cabecalho.php';
 include_once 'conexao.php';
 ?>
 <!DOCTYPE html>
@@ -7,84 +6,59 @@ include_once 'conexao.php';
 
 <head>
     <meta charset="UTF-8">
+    <title>Produtos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="../view/css/produtos.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Produtos</title>
     <style>
-        body {
-            background-color: #fce4ec; /* Cor de fundo rosa claro */
-        }
-
-        h3 {
-            color: #EE6E73; /* Cor do título rosa mais escuro */
-        }
-
-        hr {
-            border-color: #DF696E; /* Cor da linha separadora rosa mais escuro */
-        }
-
-        .card {
-            background-color: #FFA5AA; /* Cor do card rosa claro */
-            color: black; /* Cor do texto rosa mais escuro */
-        }
-
-        .card-action a.btn {
-            background-color: #DF696E; /* Cor do botão rosa mais escuro */
-        }
-
-        .card-action a.btn:hover {
-            background-color: #D6656B; /* Cor do botão rosa mais escura ao passar o mouse */
-        }
-
-        .preco {
-            font-size: 20px;
-            color: #D6656B;
-        }
+        
     </style>
 </head>
 
 <body>
+    <?php include_once '../view/header.php'; ?>
+
     <div class="container">
         <h3>Produtos para venda</h3>
         <hr>
 
-        <?php
-        function mostrarProduto($linha)
-        {
-            echo "<div class='col s12 m4'>";
-            echo "<div class='card'>";
-            echo "<div class='card-image'>";
-            echo "<img src='imagens/{$linha['imagem']}.webp'><br>";
-            echo "</div>";
-            echo "<div class='card-content'>";
-            echo "<p>{$linha['descricao']}</p>";
-            echo "</div>";
-            echo "<div class='card-action'>";
-            // Adicionando o código do produto como parâmetro no link
-            echo "<p class='preco'>{$linha['preco']}</p>";
-            echo "<a href='carrinho.php?codigo={$linha['id']}' class='btn'>Comprar";
-            echo "<i class='small material-icons'>local_grocery_store</i></a>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-        }
+        <div class="row">
+            <?php
+            function mostrarProduto($produto)
+            {
+                ?>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="../imagens/<?= htmlspecialchars($produto['imagem']) ?>.webp" alt="Imagem do produto"><br>
+                        </div>
+                        <div class="card-content">
+                            <p><?= htmlspecialchars($produto['descricao']) ?></p>
+                        </div>
+                        <div class="card-action">
+                            <p class="preco"><?= htmlspecialchars($produto['preco']) ?></p>
+                            <a href="carrinho.php?codigo=<?= htmlspecialchars($produto['id']) ?>" class="btn">
+                                Comprar
+                                <i class="small material-icons">local_grocery_store</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
 
-        echo "<div class='row'>";
-        $consultaProdutos = $conn->prepare('SELECT * FROM produtos');
-        $consultaProdutos->execute();
+            $consultaProdutos = $conn->prepare('SELECT * FROM produtos');
+            $consultaProdutos->execute();
 
-        while ($linhaProduto = $consultaProdutos->fetch(PDO::FETCH_ASSOC)) {
-            mostrarProduto($linhaProduto);
-        }
-        echo "</div>";
-        ?>
+            while ($produto = $consultaProdutos->fetch(PDO::FETCH_ASSOC)) {
+                mostrarProduto($produto);
+            }
+            ?>
+        </div>
     </div>
 
-    <?php //include_once "footer.php"; ?>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <?php include_once '../view/footer.php'; ?>
 </body>
 
 </html>

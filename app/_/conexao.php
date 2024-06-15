@@ -17,7 +17,7 @@ $userName = getenv('CONN_USER_NAME');
 $pass = getenv('CONN_PASSWORD');
 
 try {
-    $conn = new PDO ("mysql:host=localhost;dbname=db_pelucias","root", "");
+    $conn = new PDO ("mysql:host=localhost;dbname=db_pelucias","carol", "");
 } catch(PDOException $e){
     echo "Erro com banco de dados: " . $e->getMessage();
 } catch(Exception $e){
