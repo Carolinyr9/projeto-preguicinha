@@ -1,5 +1,5 @@
 <?php
-include_once 'cabecalho.php';
+//include_once 'cabecalho.php';
 include_once 'conexao.php';
 ?>
 <!DOCTYPE html>
@@ -50,39 +50,38 @@ include_once 'conexao.php';
         <hr>
 
         <?php
-        function mostrarDados($linha)
+        function mostrarProduto($linha)
         {
             echo "<div class='col s12 m4'>";
             echo "<div class='card'>";
             echo "<div class='card-image'>";
-            echo "<img src='imagens/{$linha['proImagem']}.webp'><br>";
+            echo "<img src='imagens/{$linha['imagem']}.webp'><br>";
             echo "</div>";
             echo "<div class='card-content'>";
-            echo "<p>{$linha['proDescricao']}</p>";
+            echo "<p>{$linha['descricao']}</p>";
             echo "</div>";
             echo "<div class='card-action'>";
             // Adicionando o código do produto como parâmetro no link
-            echo "<p class='preco'>{$linha['proPreco']}</p>";
-            echo "<a href='carrinho.php?codigo={$linha['proId']}' class='btn'>Comprar";
+            echo "<p class='preco'>{$linha['preco']}</p>";
+            echo "<a href='carrinho.php?codigo={$linha['id']}' class='btn'>Comprar";
             echo "<i class='small material-icons'>local_grocery_store</i></a>";
-
             echo "</div>";
             echo "</div>";
             echo "</div>";
         }
 
         echo "<div class='row'>";
-        $consulta = $conn->prepare('SELECT * FROM tabprodutos');
-        $consulta->execute();
+        $consultaProdutos = $conn->prepare('SELECT * FROM produtos');
+        $consultaProdutos->execute();
 
-        while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
-            mostrarDados($linha);
+        while ($linhaProduto = $consultaProdutos->fetch(PDO::FETCH_ASSOC)) {
+            mostrarProduto($linhaProduto);
         }
         echo "</div>";
         ?>
     </div>
 
-    <?php include_once "footer.php"; ?>
+    <?php //include_once "footer.php"; ?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
