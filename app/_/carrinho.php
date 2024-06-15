@@ -33,7 +33,7 @@ include_once "conexao.php";
             if ($stmt->rowCount() > 0) {
                 // Atualiza a quantidade se o produto já estiver no carrinho_compras
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                $quant += $row['quantidade'];
+                $quant = $row['quantidade'];
                 $stmt = $conn->prepare("UPDATE carrinho_compras SET quantidade = :quantidade WHERE produto_id = :produto_id");
             } else {
                 // Adiciona o produto ao carrinho_compras se não estiver lá
