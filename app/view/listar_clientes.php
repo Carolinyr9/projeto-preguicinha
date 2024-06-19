@@ -26,20 +26,22 @@ $dados = $consulta->getAllClientData();
                 <tr>
                     <th>Código</th>
                     <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Data Nasc.</th>
+                    <th>Email</th>
+                    <th>Endereço</th>
+                    <th>CEP</th>
                     <th colspan="2">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     while ($linha = $dados->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<tr><td>{$linha['cliId']}</td>";
-                        echo "<td>{$linha['cliNome']}</td>";
-                        echo "<td>{$linha['cliTelefone']}</td>";
-                        echo "<td>{$linha['cliDataNasc']}</td>";
-                        echo "<td><a href='alterar_cliente.php?id={$linha['cliId']}' class='btn-floating orange'><i class='material-icons'>edit</i></a></td>";
-                        echo "<td><a href='excluir_cliente_action.php?id={$linha['cliId']}' class='btn-floating blue'><i class='material-icons'>delete</i></a></td></tr>";
+                        echo "<tr><td>{$linha['id']}</td>";
+                        echo "<td>{$linha['nome']}</td>";
+                        echo "<td>{$linha['email']}</td>";
+                        echo "<td>{$linha['endereco']}</td>";
+                        echo "<td>{$linha['cep']}</td>";
+                        echo "<td><a href='alterar_cliente.php?id={$linha['id']}' class='btn-floating orange'><i class='material-icons'>edit</i></a></td>";
+                        echo "<td><a href='excluir_cliente_action.php?id={$linha['id']}' class='btn-floating blue'><i class='material-icons'>delete</i></a></td></tr>";
                     }
                 ?>
             </tbody>
