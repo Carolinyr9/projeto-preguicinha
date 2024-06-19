@@ -5,6 +5,10 @@
     class ClienteController{
         private $cliente;
 
+        private function connectClientClass(){
+            $this->cliente = new Cliente;
+        }
+
 
 
     }
