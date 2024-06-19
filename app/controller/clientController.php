@@ -16,6 +16,11 @@
             return $consulta;
         }
 
+        public function registerClient($nome,$senha,$email,$endereco,$cep){
+            $this->connectClientClass();
+            $registro = $this->cliente->registerClient($nome,$senha,$email,$endereco,$cep);
+        }
+
 
     }
 ?>

@@ -19,8 +19,19 @@
             $consulta = $this->conn->prepare('Select * from tabclientes');
             $consulta->execute();
             return $consulta;
+        public function registerClient($nome,$senha,$email,$endereco,$cep){
+            $this->getConnectionDataBase();
+            try{
+                $register = $this->conn->prepare("INSERT into clientes (nome, senha, email, endereco, cep) VALUES (?,?,?,?,?)");
+                $register->bindValue(1, $nome);
+                $register->bindValue(2, $senha);
+                $register->bindValue(3, $email);
+                $register->bindValue(4, $endereco);
+                $register->bindValue(5, $cep);
+                $register->execute();
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
         }
-
-
     }
 ?>
