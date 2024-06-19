@@ -1,5 +1,7 @@
 <?php
-   require_once 'config.php';
+    session_start();
+    require_once '../../config/database.php';
+    $database = new Database();
 
    if(isset($_POST['btncadastrar'])){
       $nome = filter_input(INPUT_POST,'txtnome');
