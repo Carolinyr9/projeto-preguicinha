@@ -33,54 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Login</title>
-    <style>
-        h3{
-            color: white;
-        }
-
-        body {
-            background-color: #fce4ec; /* Cor de fundo rosa claro */
-        }
-
-        .card {
-            width: 30vw;
-            margin: 50px auto;
-            text-align: center;
-            background-color: #FFA5AA; /* Cor do card rosa claro */
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .card-content {
-            padding-top: 20px;
-        }
-
-        .btn {
-            background-color: #DF696E; /* Cor do botão rosa mais escuro */
-        }
-
-        .btn:hover {
-            background-color: #D6656B; /* Cor do botão rosa mais escura ao passar o mouse */
-        }
-
-        .mensagem-erro {
-            color: red;
-        }
-
-        .redirect {
-            box-shadow: 1px 2px 6px #0000007d !important;
-            margin: auto;
-            display: inline-block;
-            border: none;
-            border-radius: 3px;
-            line-height: 36px;
-            padding: 2px;
-            color: white;
-            text-align: center;
-            background-color: #DF696E;
-            text-transform: uppercase;
-        }
-    </style>
 </head>
 
 <body>
