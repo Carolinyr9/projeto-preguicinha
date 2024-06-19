@@ -12,7 +12,7 @@
         public function loginClient($email,$senha){
             $this->connectClientClass();
             $login = $this->cliente->loginClient($email,$senha);
-            
+
             return $login;
         }
 
@@ -33,6 +33,13 @@
             $consulta = $this->cliente->getClientDadaById($id);
 
             return $consulta;
+        }
+
+        public function updateClientDatas($id,$nome,$senha,$email,$endereco,$cep){
+            $this->connectClientClass();
+            $update = $this->cliente->updateClientDatas($id,$nome,$senha,$email,$endereco,$cep);
+
+            return $update;
         }
 
     }

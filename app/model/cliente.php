@@ -9,18 +9,18 @@
         private $cep;
         private $conn;
 
-        private function getConnectionDataBase(){
+        private function getConnectionDataBase() {
             $database = new DataBase;
             $this->conn = $database->getConnection();
             
         }
 
-        public function loginClient($email,$senha){
+        public function loginClient($email,$senha) {
             $this->getConnectionDataBase();
             try{
-                $login = $this->conn->prepare('SELECT * FROM clientes WHERE email = :email AND senha = :senha');
-                $login->bindParam(":email", $email);
-                $login->bindParam(":senha", $senha);
+                $login = $this->conn->prepare('SELECT * FROM clientes WHERE email = ? AND senha = ?');
+                $login->bindParam(1, $email);
+                $login->bindParam(1, $senha);
                 $login->execute();
 
                 if ($login->rowCount() > 0) {
@@ -44,7 +44,7 @@
             }
         }
 
-        public function registerClient($nome,$senha,$email,$endereco,$cep){
+        public function registerClient($nome,$senha,$email,$endereco,$cep) {
             $this->getConnectionDataBase();
             try{
                 $register = $this->conn->prepare("INSERT into clientes (nome, senha, email, endereco, cep) VALUES (?,?,?,?,?)");
@@ -71,5 +71,21 @@
             }
         }
 
+        public function updateClientDatas($id,$nome,$senha,$email,$endereco,$cep) {
+            $this->getConnectionDataBase();
+            try{
+                $register = $this->conn->prepare("UPDATE clientes SET nome= ? , senha= ? , email= ? , endereco= ? , cep= ?  WHERE id = ?");
+                $register->bindValue(1, $nome);
+                $register->bindValue(2, $senha);
+                $register->bindValue(3, $email);
+                $register->bindValue(4, $endereco);
+                $register->bindValue(5, $cep);
+                $register->bindValue(6, $id);
+                $register->execute();
+                return true;
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
+        }
     }
 ?>
