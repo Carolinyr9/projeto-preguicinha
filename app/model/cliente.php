@@ -58,5 +58,18 @@
                 throw new PDOException($e->getMessage(), (int)$e->getCode());
             }
         }
+
+        public function getClientDadaById($id) {
+            $this->getConnectionDataBase();
+            try{
+                $consulta = $this->conn->prepare('SELECT * FROM clientes WHERE id = ?');
+                $consulta->bindValue(1, $id);
+                $consulta->execute();
+                return $consulta;
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
+        }
+
     }
 ?>

@@ -28,5 +28,12 @@
             $registro = $this->cliente->registerClient($nome,$senha,$email,$endereco,$cep);
         }
 
+        public function getClientDadaById($id){
+            $this->connectClientClass();
+            $consulta = $this->cliente->getClientDadaById($id);
+
+            return $consulta;
+        }
+
     }
 ?>
