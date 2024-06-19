@@ -16,9 +16,15 @@
 
         public function getAllClientData(){
             $this->getConnectionDataBase();
-            $consulta = $this->conn->prepare('Select * from tabclientes');
-            $consulta->execute();
-            return $consulta;
+            try{
+                $consulta = $this->conn->prepare('Select * from clientes');
+                $consulta->execute();
+                return $consulta;
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
+        }
+
         public function registerClient($nome,$senha,$email,$endereco,$cep){
             $this->getConnectionDataBase();
             try{
