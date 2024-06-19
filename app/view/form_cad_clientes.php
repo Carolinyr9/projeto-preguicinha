@@ -15,9 +15,9 @@ if(isset($_POST['btncadastrar'])){
         //Variável session atribuida com true caso queira checar nas outras páginas 
         //se o cliente se logou antes de acessar elas.
         $_SESSION['clientLogged'] = TRUE;
-        header('Location:listar_clientes.php');
+        header('Location:produtos.php');
     }else{
-        echo '<scrpit>alert("Preencha todos os campos!");</scrpit>';
+        echo '<script>alert("Preencha todos os campos!");</script>';
     }
 }
 ?>
