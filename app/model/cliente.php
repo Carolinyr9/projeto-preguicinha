@@ -9,6 +9,11 @@
         private $cep;
         private $conn;
 
+        private function getConnectionDataBase(){
+            $database = new DataBase;
+            $this->conn = $database->getConnection();
+        }
+
 
 
     }
