@@ -6,40 +6,43 @@ session_start();
 
 <head>
    <meta charset="UTF-8">
-   <!-- Compiled and minified CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-   <link rel="stylesheet" href="css/estilos.css">
-   <!--Import Google Icon Font-->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-   <title>Sysexemplo - Cadastro de Clientes</title>
+   <title>Cadastro de Clientes</title>
+   <link rel="stylesheet" href="../view/css/formCli.css">
 </head>
 
 <body>
 <?php
 include_once '../view/header.php';
 ?>
+    <div class="container">
          <h3 class="light">Cadastro de clientes</h3>
-         <form action="cadastrar_clientes.php" method="post">
-            <div class="input-field col s12">
-               <label for="nome">Nome: </label><br>
-               <input type="text" name="txtnome" id="nome">
+         <form action="cadastrar_clientes.php" method="POST">
+            <label>Nome: 
+                <input type="text" name="txtnome">
+            </label>
 
-            </div>
-            <div class="input-field col s12">
-               <label for="fone">Telefone: </label><br>
-               <input type="text" name="txtfone" id="fone">
-            </div>
-            <div class="input-field col s12">
-               <label for="data">Data Nascimento: </label><br>
-               <input type="date" name="txtdatanasc" id="data">
+            <label>Email: 
+                <input type="text" name="txtemail">
+            </label>
 
-            </div>
-            <button type="submit" class="btn" name="btncadastrar">Cadastrar </button>
+            <label>Endereço: 
+                <input type="text" name="txtendereco">
+            </label>
+
+            <label>CEP: 
+                <input type="text" name="txtcep">
+            </label>
+
+            <label>Senha: 
+                <input type="text" name="txtsenha">
+            </label>
+
+            <input type="submit" class="btn" name="btncadastrar" value="Cadastrar">
             <a href="listar_clientes.php" class="btn green">Listar clientes</a>
-         </form>
-
-      </div>
+        </form>
+    </div>
     <?php
         include_once '../view/footer.php';
     ?>
