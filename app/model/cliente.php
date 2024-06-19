@@ -14,6 +14,12 @@
             $this->conn = $database->getConnection();
         }
 
+        public function getAllClientData(){
+            $this->getConnectionDataBase();
+            $consulta = $this->conn->prepare('Select * from tabclientes');
+            $consulta->execute();
+            return $consulta;
+        }
 
 
     }
