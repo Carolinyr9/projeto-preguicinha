@@ -9,6 +9,12 @@
             $this->cliente = new Cliente;
         }
 
+        public function getAllClientData(){
+            $this->connectClientClass();
+            $consulta = $this->cliente->getAllClientData();
+
+            return $consulta;
+        }
 
 
     }
