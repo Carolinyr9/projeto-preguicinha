@@ -12,12 +12,31 @@
         private function getConnectionDataBase(){
             $database = new DataBase;
             $this->conn = $database->getConnection();
+            
+        }
+
+        public function loginClient($email,$senha){
+            $this->getConnectionDataBase();
+            try{
+                $login = $this->conn->prepare('SELECT * FROM clientes WHERE email = :email AND senha = :senha');
+                $login->bindParam(":email", $email);
+                $login->bindParam(":senha", $senha);
+                $login->execute();
+
+                if ($login->rowCount() > 0) {
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
+            }catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
         }
 
         public function getAllClientData(){
             $this->getConnectionDataBase();
             try{
-                $consulta = $this->conn->prepare('Select * from clientes');
+                $consulta = $this->conn->prepare('SELECT * FROM clientes');
                 $consulta->execute();
                 return $consulta;
             } catch(PDOException $e) {

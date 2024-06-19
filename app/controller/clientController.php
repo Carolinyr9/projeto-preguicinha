@@ -9,6 +9,13 @@
             $this->cliente = new Cliente;
         }
 
+        public function loginClient($email,$senha){
+            $this->connectClientClass();
+            $login = $this->cliente->loginClient($email,$senha);
+            
+            return $login;
+        }
+
         public function getAllClientData(){
             $this->connectClientClass();
             $consulta = $this->cliente->getAllClientData();
@@ -20,7 +27,6 @@
             $this->connectClientClass();
             $registro = $this->cliente->registerClient($nome,$senha,$email,$endereco,$cep);
         }
-
 
     }
 ?>
