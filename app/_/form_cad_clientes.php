@@ -16,8 +16,9 @@ session_start();
 </head>
 
 <body>
-   <div class="row">
-      <div class="col s12 m6 push-m3">
+<?php
+include_once '../view/header.php';
+?>
          <h3 class="light">Cadastro de clientes</h3>
          <form action="cadastrar_clientes.php" method="post">
             <div class="input-field col s12">
@@ -39,6 +40,9 @@ session_start();
          </form>
 
       </div>
+    <?php
+        include_once '../view/footer.php';
+    ?>
 </body>
 
 </html>
