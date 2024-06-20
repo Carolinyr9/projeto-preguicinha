@@ -22,7 +22,7 @@ class Database {
         $this->db = getenv('CONN_DB');
         $this->user = getenv('CONN_USER');
         $this->pass = getenv('CONN_PASS');
-        $this->chartset = 'utf8mb4';
+        $this->charset = 'utf8mb4';
     }
 
     public function getConnection() {
