@@ -1,0 +1,17 @@
+h3{
+    color: white;
+}
+
+body {
+    background-color: #fce4ec;
+}
+
+main{
+    width: 80%;
+    margin: 40px auto;
+    height: calc(100vh - 200px);
+}
+
+.btn{
+    margin-top: 20px;
+}

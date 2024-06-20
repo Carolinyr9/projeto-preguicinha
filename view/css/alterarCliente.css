@@ -1,0 +1,11 @@
+body {
+    background-color: #fce4ec; 
+}
+
+.row{
+    margin-bottom: 60px;
+}
+
+form .btn{
+    margin-top: 40px;
+}
