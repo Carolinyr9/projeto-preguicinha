@@ -6,6 +6,18 @@ include_once './header.php';
 $consulta = new ClienteController();
 $dados = $consulta->getAllClientData();
 
+if(isset($_POST['btnDelete'])){
+    if(isset($_POST['id'])){
+        $id = $_POST['id'];
+        $resultado = $consulta->deleteClientDatas($id);
+
+        if($resultado == TRUE){
+            echo '<script>alert("Cliente excluido com sucesso!"); window.location.href = "listar_clientes.php";</script>';
+        }
+    }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,14 +46,23 @@ $dados = $consulta->getAllClientData();
             </thead>
             <tbody>
                 <?php
-                    while ($linha = $dados->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<tr><td>{$linha['id']}</td>";
-                        echo "<td>{$linha['nome']}</td>";
-                        echo "<td>{$linha['email']}</td>";
-                        echo "<td>{$linha['endereco']}</td>";
-                        echo "<td>{$linha['cep']}</td>";
-                        echo "<td><a href='alterar_cliente.php?id={$linha['id']}' class='btn-floating orange'><i class='material-icons'>edit</i></a></td>";
-                        echo "<td><a href='excluir_cliente_action.php?id={$linha['id']}' class='btn-floating blue'><i class='material-icons'>delete</i></a></td></tr>";
+                    while ($linha = $dados->fetch(PDO::FETCH_ASSOC)) { 
+                ?>
+                    <tr>
+                        <td><?php echo $linha['id']?></td>
+                        <td><?php echo $linha['nome']?></td>
+                        <td><?php echo $linha['email']?></td>
+                        <td><?php echo $linha['endereco']?></td>
+                        <td><?php echo $linha['cep']?></td>
+                        <td><a href='alterar_cliente.php?id=<?php echo $linha['id']?>' class='btn-floating orange'><i class='material-icons'>edit</i></a></td>
+                        <td>
+                            <form action="listar_clientes.php" method="POST">
+                                <input type="hidden" name="id" value="<?php echo $linha['id']?>"></input>
+                                <button type="submit" class='btn-floating blue' name="btnDelete"><i class="material-icons">delete</i></button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php    
                     }
                 ?>
             </tbody>
