@@ -36,33 +36,30 @@ if (isset($_POST['entrar'])) {
 
 <body>
     <?php
-    include_once 'cabecalho.php';
+        include_once '../view/header.php';
     ?>
     <div class="container">
         <div class="card">
             <h3>Login Funcionários</h3>
-            <?php
-            if (isset($mensagemErro)) {
-                echo "<p class='mensagem-erro'>$mensagemErro</p>";
-            }
-            ?>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="input-field">
-                    <input type="text" id="usuario" name="usuario" required>
-                    <label for="usuario">Usuário</label>
-                </div>
-                <div class="input-field">
-                    <input type="password" id="senha" name="senha" required>
-                    <label for="senha">Senha</label>
-                </div>
-                <button type="submit" class="btn">Entrar</button>
+            <form action="loginFunc.php" method="POST">
+                <label for="email">
+                    Email
+                    <input type="text" name="email" required>
+                    </label>
+                    <label for="senha">
+                        Senha
+                        <input type="text" name="senha" required>
+                    </label>
+                <input type="submit" value="Entrar" class="btn" name="entrar">
             </form>
 
             <a href="insereFuncionario.php" class="redirect">Registre-se!</a>
         </div>
     </div>
 
-    <?php include_once "footer.php"; ?>
+    <?php
+        include_once '../view/footer.php';
+    ?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
