@@ -39,11 +39,6 @@ if (isset($_POST['entrar'])) {
     <div class="container">
         <div class="card">
             <h3>Login Clientes</h3>
-            <?php
-            if (isset($mensagemErro)) {
-                echo "<p class='mensagem-erro'>$mensagemErro</p>";
-            }
-            ?>
             <form action="loginCli.php" method="post">
                 <div class="input-field">
                     <input type="text" name="email" required>
