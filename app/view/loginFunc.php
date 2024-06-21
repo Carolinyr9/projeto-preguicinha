@@ -1,6 +1,6 @@
 <?php
-include_once 'cabecalho.php';
-include_once 'conexao.php';
+session_start();
+require_once '../controller/funcionarioController.php';
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
