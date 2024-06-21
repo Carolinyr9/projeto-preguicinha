@@ -4,7 +4,13 @@
     class FuncionarioController{
         private $funcionario;
 
-        private function __constructor(){
+        public function __construct(){
             $this->funcionario = new Funcionario;
+        }
+
+        public function loginEmployee($email,$senha){
+            $login = $this->funcionario->loginEmployee($email,$senha);
+
+            return $login;
         }
     }
