@@ -84,6 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+    <?php
+    include_once 'cabecalho.php';
+    ?>
     <div class="container">
         <div class="card">
             <h3>Login Funcionários</h3>
