@@ -2,24 +2,21 @@
 session_start();
 require_once '../controller/funcionarioController.php';
 
-// Verifica se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifica as credenciais
-    $usuario = $_POST['usuario'];
+$login = new FuncionarioController();
+
+if (isset($_POST['entrar'])) {
+    $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $sql = "SELECT * FROM tabfuncionarios WHERE funUsuario = :usuario AND funSenha = :senha";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':usuario', $usuario);
-    $stmt->bindParam(':senha', $senha);
-    $stmt->execute();
-
-    // Se as credenciais estiverem corretas, redireciona para a página principal
-    if ($stmt->rowCount() > 0) {
-        header('Location: listafuncionarios.php');
+    $result = $login->loginEmployee($email,$senha);
+    if($result == TRUE){
+        //Variável session atribuida com true caso queira checar nas outras páginas 
+        //se o funcionario se logou antes de acessar elas.
+        $_SESSION['funcLogged'] = TRUE;
+        header('Location: produtos.php');
         exit;
-    } else {
-        $mensagemErro = "Credenciais inválidas. Tente novamente.";
+    }else{
+        echo '<script>alert("Email ou senha incorretos!");</script>';
     }
 }
 ?>
