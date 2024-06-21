@@ -20,7 +20,7 @@
             try{
                 $login = $this->conn->prepare('SELECT * FROM clientes WHERE email = ? AND senha = ?');
                 $login->bindParam(1, $email);
-                $login->bindParam(1, $senha);
+                $login->bindParam(2, $senha);
                 $login->execute();
 
                 if ($login->rowCount() > 0) {
