@@ -13,4 +13,10 @@
 
             return $login;
         }
+
+        public function getAllEmployeeData(){
+            $consulta = $this->funcionario->getAllEmployeeData();
+
+            return $consulta;
+        }
     }

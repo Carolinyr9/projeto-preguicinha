@@ -26,4 +26,14 @@
             }
         }
 
+        public function getAllEmployeeData(){
+            try{
+                $consulta = $this->conn->prepare('SELECT * FROM funcionarios');
+                $consulta->execute();
+                return $consulta;
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
+        }
+
     }
