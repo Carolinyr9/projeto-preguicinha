@@ -87,5 +87,17 @@
                 throw new PDOException($e->getMessage(), (int)$e->getCode());
             }
         }
+
+        public function deleteClientDatas($id){
+            $this->getConnectionDataBase();
+            try{
+                $delete = $this->conn->prepare("DELETE FROM clientes WHERE id = ?");
+                $delete->bindValue(1, $id);
+                $delete->execute();
+                return true;
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
+        }
     }
 ?>

@@ -42,5 +42,12 @@
             return $update;
         }
 
+        public function deleteClientDatas($id){
+            $this->connectClientClass();
+            $delete = $this->cliente->deleteClientDatas($id);
+
+            return $delete;
+        }
+
     }
 ?>
