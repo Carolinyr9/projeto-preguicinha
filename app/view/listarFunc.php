@@ -40,9 +40,9 @@ $dados = $consulta->getAllEmployeeData();
                 while ($registro = $dados->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr>";
                     foreach ($registro as $key => $value) {
-                        if ($key == "funFoto") {
+                        if ($key == "foto") {
                             echo "<td>";
-                            echo "<img src='imagens/" . $value . ".webp' alt='Imagem'>";
+                            echo "<img src='../imagens/" . $value . ".webp' alt='Imagem'>";
                             echo "</td>";
                         } else {
                             echo "<td>";

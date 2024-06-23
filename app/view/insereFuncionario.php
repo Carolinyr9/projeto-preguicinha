@@ -36,6 +36,9 @@ if(isset($_POST['btnCadastrar'])){
 </head>
 
 <body>
+    <?php
+        include_once '../view/header.php';
+    ?>
     <h1>Se registre - Funcionários</h1>
     <form action="insereFuncionario.php" method="post">
         <div class="mb-3">
@@ -67,9 +70,9 @@ if(isset($_POST['btnCadastrar'])){
         <a href="loginFunc.php" class="redirect">Login</a>
     </form>
 
-
-
-    <?php include_once "footer.php"; ?>
+    <?php
+        include_once './footer.php';
+    ?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
