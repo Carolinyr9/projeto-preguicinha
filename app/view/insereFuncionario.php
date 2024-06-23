@@ -31,62 +31,7 @@ if(isset($_POST['btnCadastrar'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Cadastro Funcionarios</title>
-    <style>
-        body {
-            background-color: #fce4ec; /* Cor de fundo rosa claro */
-        }
-
-        h1 {
-            font-size: 50px;
-            text-align: center;
-            margin: 20px 0;
-            color: #EE6E73; /* Cor do título rosa mais escuro */
-        }
-
-        form {
-            margin: 50px auto;
-            width: 50%; /* Alterei a largura para 50% para se ajustar melhor */
-            max-width: 500px;
-            text-align: center;
-            background-color: #FFA5AA; /* Cor do formulário rosa claro */
-            padding: 20px;
-            border-radius: 20px;
-        }
-
-        .redirect {
-            box-shadow: 1px 2px 6px #0000007d !important;
-            margin: 20px auto;
-            display: block;
-            border: none;
-            border-radius: 3px;
-            line-height: 36px;
-            padding: 2px;
-            color: white;
-            width: 88px;
-            text-align: center;
-            background-color: #DF696E;
-            text-transform: uppercase;
-        }
-
-        form label {
-            color: #DF696E; /* Cor do texto rosa mais escuro */
-        }
-
-        form input {
-            border: 1px solid #DF696E; /* Cor da borda rosa mais escuro */
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        form button {
-            background-color: #DF696E; /* Cor do botão rosa mais escuro */
-        }
-
-        form button:hover {
-            background-color: #D6656B; /* Cor do botão rosa mais escura ao passar o mouse */
-        }
-    </style>
+    <link rel="stylesheet" href="./css/insereFunc.css">
     <title>Cadastro de Funcionários</title>
 </head>
 
