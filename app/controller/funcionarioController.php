@@ -19,4 +19,10 @@
 
             return $consulta;
         }
+
+        public function registerEmployee($nome,$senha,$email,$cargo,$usuario,$foto) {
+            $register = $this->funcionario->registerEmployee($nome,$senha,$email,$cargo,$usuario,$foto);
+
+            return $register;
+        }
     }

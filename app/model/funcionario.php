@@ -36,4 +36,20 @@
             }
         }
 
+        public function registerEmployee($nome,$senha,$email,$cargo,$usuario,$foto) {
+            try{
+                $register = $this->conn->prepare("INSERT INTO funcionarios (nome, senha, email, cargo, usuario, foto) VALUES (?,?,?,?,?,?)");
+                $register->bindValue(1, $nome);
+                $register->bindValue(2, $senha);
+                $register->bindValue(3, $email);
+                $register->bindValue(4, $cargo);
+                $register->bindValue(5, $usuario);
+                $register->bindValue(6, $foto);
+                $register->execute();
+                return TRUE;
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
+        }
+
     }
