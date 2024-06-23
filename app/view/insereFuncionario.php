@@ -37,37 +37,33 @@ if(isset($_POST['btnCadastrar'])){
 
 <body>
     <h1>Se registre - Funcionários</h1>
-    <form action="insereFuncbd.php" method="post" autocomplete="off">
-        <div class="mb-3">
-            <label for="id" class="form-label">ID</label>
-            <input type="text" class="form-control" id="id" name="id">
-        </div>
+    <form action="insereFuncionario.php" method="post">
         <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome">
+            <input type="text" class="form-control" id="nome" name="nome" required>
         </div>
         <div class="mb-3">
             <label for="cargo" class="form-label">Cargo</label>
-            <input type="text" class="form-control" id="cargo" name="cargo">
+            <input type="text" class="form-control" id="cargo" name="cargo" required>
         </div>
         <div class="mb-3">
             <label for="usuario" class="form-label">Usuário</label>
-            <input type="text" class="form-control" id="usuario" name="usuario">
+            <input type="text" class="form-control" id="usuario" name="usuario" required>
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
-            <input type="text" class="form-control" id="foto" name="foto">
+            <input type="text" class="form-control" id="foto" name="foto" required>
         </div>
         <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" id="senha" name="senha">
+            <input type="password" class="form-control" id="senha" name="senha" required>
         </div>
         
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <input type="submit" value="Cadastrar" class="btn btn-primary" name="btnCadastrar">
         <a href="loginFunc.php" class="redirect">Login</a>
     </form>
 
