@@ -1,6 +1,27 @@
 <?php
-include_once 'cabecalho.php';
-include_once 'conexao.php';
+session_start();
+require_once '../controller/funcionarioController.php';
+
+$registro = new FuncionarioController();
+
+if(isset($_POST['btnCadastrar'])){
+    if(!empty($_POST['email']) && !empty($_POST['nome']) && !empty($_POST['cargo']) && !empty($_POST['usuario']) && !empty($_POST['foto']) && !empty($_POST['senha'])){
+        $email = $_POST['email'];
+        $nome = $_POST[ 'nome'];
+        $cargo = $_POST[ 'cargo'];
+        $usuario = $_POST[ 'usuario'];
+        $foto = $_POST[ 'foto'];
+        $senha = $_POST[ 'senha'];
+        
+        $registro->registerEmployee($nome,$senha,$email,$cargo,$usuario,$foto);
+        //Variável session atribuida com true caso queira checar nas outras páginas 
+        //se o funcionario se logou antes de acessar elas.
+        $_SESSION['funcLogged'] = TRUE;
+        header('Location:produtos.php');
+    }else{
+        echo '<script>alert("Preencha todos os campos!");</script>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
