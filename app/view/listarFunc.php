@@ -37,22 +37,20 @@ $dados = $consulta->getAllEmployeeData();
             </thead>
             <tbody>
                 <?php
-                while ($registro = $dados->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<tr>";
-                    foreach ($registro as $key => $value) {
-                        if ($key == "foto") {
-                            echo "<td>";
-                            echo "<img src='../imagens/" . $value . ".webp' alt='Imagem'>";
-                            echo "</td>";
-                        } else {
-                            echo "<td>";
-                            echo $value;
-                            echo "</td>";
+                        while ($linha = $dados->fetch(PDO::FETCH_ASSOC)) { 
+                    ?>
+                        <tr>
+                            <td><?php echo $linha['id']?></td>
+                            <td><?php echo $linha['nome']?></td>
+                            <td><?php echo $linha['usuario']?></td>
+                            <td><?php echo $linha['email']?></td>
+                            <td><?php echo $linha['senha']?></td>
+                            <td><?php echo $linha['cargo']?></td>
+                            <td><img src="../imagens/<?php echo $linha['foto'] ?>" alt="Imagem"></td>
+                        </tr>
+                    <?php    
                         }
-                    }
-                    echo "</tr>";
-                }
-                ?>
+                    ?>
             </tbody>
         </table>
         <a href='insereFuncionario.php' class='btn'>Adicionar Funcionario</a>
