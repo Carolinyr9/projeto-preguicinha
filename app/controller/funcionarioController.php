@@ -25,22 +25,4 @@
 
             return $register;
         }
-
-        public function getEmployeeDadaById($id){
-            $consulta = $this->funcionario->getEmployeeDadaById($id);
-
-            return $consulta;
-        }
-
-        public function updateEmployeeDatas($nome,$senha,$email,$cargo,$usuario,$foto,$id){
-            $update = $this->funcionario->updateEmployeeDatas($nome,$senha,$email,$cargo,$usuario,$foto,$id);
-
-            return $update;
-        }
-
-        public function deleteEmployeeDatas($id){
-            $delete = $this->funcionario->deleteEmployeeDatas($id);
-
-            return $delete;
-        }
     }
