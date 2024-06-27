@@ -11,7 +11,7 @@
 
 <body>
     <?php
-    include_once 'view/header.php';
+    include_once 'header.php';
     ?>
 
     <div class="container">
@@ -20,14 +20,14 @@
 
         <div class="row">
             <?php
-            require_once 'view/produto.php';
+            require_once 'produtoView.php';
             mostrarProdutos();
             ?>
         </div>
     </div>
 
     <?php 
-    include_once "view/footer.php"; 
+    include_once "footer.php"; 
     ?>
 </body>
 

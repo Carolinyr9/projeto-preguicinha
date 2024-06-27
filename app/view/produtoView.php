@@ -1,5 +1,5 @@
 <?php
-require_once 'controller/produtoController.php';
+require_once '../controller/produtoController.php';
 $produtoController = new ProdutoController();
 function mostrarProdutos()
 {
@@ -15,7 +15,7 @@ function mostrarProduto($produto)
     <div class="col s12 m4">
         <div class="card">
             <div class="card-image">
-                <img src="imagens/<?= htmlspecialchars($produto['imagem']) ?>.webp" alt="Imagem do produto"><br>
+                <img src="../imagens/<?= htmlspecialchars($produto['imagem']) ?>.webp" alt="Imagem do produto"><br>
             </div>
             <div class="card-content">
                 <p><?= htmlspecialchars($produto['descricao']) ?></p>
