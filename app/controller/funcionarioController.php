@@ -31,4 +31,10 @@
 
             return $consulta;
         }
+
+        public function updateEmployeeDatas($nome,$senha,$email,$cargo,$usuario,$foto,$id){
+            $update = $this->funcionario->updateEmployeeDatas($nome,$senha,$email,$cargo,$usuario,$foto,$id);
+
+            return $update;
+        }
     }

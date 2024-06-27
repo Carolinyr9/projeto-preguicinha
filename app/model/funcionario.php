@@ -62,4 +62,21 @@
                 throw new PDOException($e->getMessage(), (int)$e->getCode());
             }
         }
+
+        public function updateEmployeeDatas($nome,$senha,$email,$cargo,$usuario,$foto, $id) {
+            try{
+                $update = $this->conn->prepare("UPDATE funcionarios SET nome= ? , senha= ? , email= ? , cargo= ? , usuario= ?, foto= ?  WHERE id = ?");
+                $update->bindValue(1, $nome);
+                $update->bindValue(2, $senha);
+                $update->bindValue(3, $email);
+                $update->bindValue(4, $cargo);
+                $update->bindValue(5, $usuario);
+                $update->bindValue(6, $foto);
+                $update->bindValue(7, $id);
+                $update->execute();
+                return true;
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
+        }
     }
