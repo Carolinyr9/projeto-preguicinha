@@ -25,4 +25,10 @@
 
             return $register;
         }
+
+        public function getEmployeeDadaById($id){
+            $consulta = $this->funcionario->getEmployeeDadaById($id);
+
+            return $consulta;
+        }
     }
