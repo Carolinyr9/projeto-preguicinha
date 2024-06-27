@@ -14,7 +14,7 @@ img {
 }
 
 main{
-    height: calc(100vh - 200px);
+    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -22,7 +22,7 @@ main{
 
 main table {
     background-color: #FFA5AA; 
-    width: 60%;
+    width: 70%;
     text-align: center;
     margin:50px auto;
     padding: 20px;
@@ -32,4 +32,8 @@ main table {
 table th,
 table td {
     color: #DF696E; 
+}
+
+.btn{
+    margin-bottom: 30px;
 }
