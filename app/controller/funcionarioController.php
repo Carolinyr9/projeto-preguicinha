@@ -37,4 +37,10 @@
 
             return $update;
         }
+
+        public function deleteEmployeeDatas($id){
+            $delete = $this->funcionario->deleteEmployeeDatas($id);
+
+            return $delete;
+        }
     }

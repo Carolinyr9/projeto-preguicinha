@@ -79,4 +79,16 @@
                 throw new PDOException($e->getMessage(), (int)$e->getCode());
             }
         }
+
+        public function deleteEmployeeDatas($id){
+            try{
+                $delete = $this->conn->prepare("DELETE FROM funcionarios WHERE id = ?");
+                $delete->bindValue(1, $id);
+                $delete->execute();
+                return TRUE;
+            } catch(PDOException $e) {
+                throw new PDOException($e->getMessage(), (int)$e->getCode());
+            }
+        }
+
     }
