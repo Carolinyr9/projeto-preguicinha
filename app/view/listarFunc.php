@@ -2,12 +2,20 @@
 session_start();
 require_once '../controller/funcionarioController.php';
 
-if((isset($_SESSION['funcLogged']) && $_SESSION['funcLogged'] != TRUE) || !isset($_SESSION['funcLogged'])){
-    echo '<script>alert("Você não tem permissão para acessar essa página!"); window.location.href = "produtos.php";</script>';
-}
-
 $consulta = new FuncionarioController();
 $dados = $consulta->getAllEmployeeData();
+
+if(isset($_POST['btnDelete'])){
+    if(isset($_POST['id'])){
+        $id = $_POST['id'];
+        $resultado = $consulta->deleteEmployeeDatas($id);
+
+        if($resultado == TRUE){
+            echo '<script>alert("Funcionario excluido com sucesso!"); window.location.href = "listarFunc.php";</script>';
+        }
+    }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +45,7 @@ $dados = $consulta->getAllEmployeeData();
                     <th>Cargo</th>
                     <th>Usuário</th>
                     <th>Foto</th>
+                    <th colspan="2"></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +60,13 @@ $dados = $consulta->getAllEmployeeData();
                             <td><?php echo $linha['senha']?></td>
                             <td><?php echo $linha['cargo']?></td>
                             <td><img src="../imagens/<?php echo $linha['foto'] ?>" alt="Imagem"></td>
+                            <td><a href='alterarFunc.php?id=<?php echo $linha['id']?>' class='btn-floating orange'><i class='material-icons'>edit</i></a></td>
+                            <td>
+                                <form action="listarFunc.php" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $linha['id']?>"></input>
+                                    <button type="submit" class='btn-floating blue' name="btnDelete"><i class="material-icons">delete</i></button>
+                                </form>
+                            </td>
                         </tr>
                     <?php    
                         }
