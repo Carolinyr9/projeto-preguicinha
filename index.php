@@ -19,15 +19,15 @@
     </style>
 <body>
     <?php
-    include_once 'view/header.php';
+    include_once 'app/view/header.php';
     ?>
     
     <div class="imagem-container">
-        <img src="imagens/Preguicinha.png" alt="Imagem de Preguiça">
+        <img src="app/imagens/Preguicinha.png" alt="Imagem de Preguiça">
     </div>
 
     <?php 
-    include_once "view/footer.php"; 
+    include_once "app/view/footer.php"; 
     ?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
