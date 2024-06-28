@@ -13,7 +13,7 @@ if (isset($_POST['entrar'])) {
         //Variável session atribuida com true caso queira checar nas outras páginas 
         //se o funcionario se logou antes de acessar elas.
         $_SESSION['funcLogged'] = TRUE;
-        header('Location: produtos.php');
+        header('Location: listarFunc.php');
         exit;
     }else{
         echo '<script>alert("Email ou senha incorretos!");</script>';
