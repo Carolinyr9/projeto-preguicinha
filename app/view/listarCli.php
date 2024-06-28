@@ -1,7 +1,10 @@
 <?php
 session_start();
 require_once '../controller/clientController.php';
-include_once './header.php';
+
+if((isset($_SESSION['funcLogged']) && $_SESSION['funcLogged'] != TRUE) || !isset($_SESSION['funcLogged'])){
+    echo '<script>alert("Você não tem permissão para acessar essa página!"); window.location.href = "produtos.php";</script>';
+}
 
 $consulta = new ClienteController();
 $dados = $consulta->getAllClientData();
@@ -31,6 +34,9 @@ if(isset($_POST['btnDelete'])){
     <title>Lista de Clientes</title>
 </head>
 <body>
+    <?php
+        include_once '../view/header.php';
+    ?>
    <main>
        <h2>Listagem de clientes</h2>
        <table>
