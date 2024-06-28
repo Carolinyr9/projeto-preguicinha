@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once '../controller/clientController.php';
-include_once '../view/header.php';
 
 $login = new ClienteController();
 
@@ -36,6 +35,9 @@ if (isset($_POST['entrar'])) {
 </head>
 
 <body>
+    <?php
+        include_once '../view/header.php';
+    ?>
     <div class="container">
         <div class="card">
             <h3>Login Clientes</h3>
