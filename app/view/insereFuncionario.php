@@ -2,6 +2,10 @@
 session_start();
 require_once '../controller/funcionarioController.php';
 
+if((isset($_SESSION['funcLogged']) && $_SESSION['funcLogged'] != TRUE) || !isset($_SESSION['funcLogged'])){
+    echo '<script>alert("Você não tem permissão para acessar essa página!"); window.location.href = "produtos.php";</script>';
+}
+
 $registro = new FuncionarioController();
 
 if(isset($_POST['btnCadastrar'])){
