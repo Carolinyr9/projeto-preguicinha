@@ -23,7 +23,6 @@ if(isset($_POST['btncadastrar'])){
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
    <meta charset="UTF-8">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -31,11 +30,8 @@ if(isset($_POST['btncadastrar'])){
    <title>Cadastro de Clientes</title>
    <link rel="stylesheet" href="./css/formCli.css">
 </head>
-
 <body>
-<?php
-include_once './header.php';
-?>
+    <?php include_once './header.php'; ?>
     <div class="container">
          <h3 class="light">Cadastro de clientes</h3>
          <form action="form_cad_clientes.php" method="POST">
@@ -63,9 +59,7 @@ include_once './header.php';
             <a href="listar_clientes.php" class="btn green">Listar clientes</a>
         </form>
     </div>
-    <?php
-        include_once './footer.php';
-    ?>
+    <?php include_once './footer.php'; ?>
 </body>
 
 </html>

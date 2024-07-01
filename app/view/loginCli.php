@@ -4,14 +4,12 @@ require_once '../controller/clientController.php';
 
 $login = new ClienteController();
 
-if (isset($_POST['entrar'])) {
+if(isset($_POST['entrar'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
     $result = $login->loginClient($email,$senha);
     if($result == TRUE){
-        //Variável session atribuida com true caso queira checar nas outras páginas 
-        //se o cliente se logou antes de acessar elas.
         $_SESSION['clientLogged'] = TRUE;
         header('Location: produtos.php');
         exit;
@@ -38,18 +36,18 @@ if (isset($_POST['entrar'])) {
     <?php
         include_once '../view/header.php';
     ?>
+    
     <div class="container">
         <div class="card">
             <h3>Login Clientes</h3>
             <form action="loginCli.php" method="post">
-                <div class="input-field">
+                <label for="email">Email
                     <input type="text" name="email" required>
-                    <label for="email">Email</label>
-                </div>
-                <div class="input-field">
+                </label>
+                
+                <label for="senha">Senha
                     <input type="text" name="senha" required>
-                    <label for="senha">Senha</label>
-                </div>
+                </label>
                 <input type="submit" value="Entrar" class="btn" name="entrar">
             </form>
 

@@ -22,7 +22,6 @@ if(isset($_POST['btnDelete'])){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,9 +33,8 @@ if(isset($_POST['btnDelete'])){
     <title>Lista de Clientes</title>
 </head>
 <body>
-    <?php
-        include_once '../view/header.php';
-    ?>
+    <?php include_once '../view/header.php'; ?>
+    
    <main>
        <h2>Listagem de clientes</h2>
        <table>
@@ -60,7 +58,7 @@ if(isset($_POST['btnDelete'])){
                         <td><?php echo $linha['email']?></td>
                         <td><?php echo $linha['endereco']?></td>
                         <td><?php echo $linha['cep']?></td>
-                        <td><a href='alterar_cliente.php?id=<?php echo $linha['id']?>' class='btn-floating orange'><i class='material-icons'>edit</i></a></td>
+                        <td><a href='alterarCliente.php?id=<?php echo $linha['id']?>' class='btn-floating orange'><i class='material-icons'>edit</i></a></td>
                         <td>
                             <form action="listar_clientes.php" method="POST">
                                 <input type="hidden" name="id" value="<?php echo $linha['id']?>"></input>
@@ -73,11 +71,7 @@ if(isset($_POST['btnDelete'])){
                 ?>
             </tbody>
         </table>
-        <a href='form_cad_clientes.php' class='btn'>Adicionar cliente</a>
-            
    </main>
-
-        
 
     <?php include_once './footer.php'; ?>
 

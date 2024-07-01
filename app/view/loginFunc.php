@@ -10,8 +10,6 @@ if (isset($_POST['entrar'])) {
 
     $result = $login->loginEmployee($email,$senha);
     if($result == TRUE){
-        //Variável session atribuida com true caso queira checar nas outras páginas 
-        //se o funcionario se logou antes de acessar elas.
         $_SESSION['funcLogged'] = TRUE;
         header('Location: listarFunc.php');
         exit;
@@ -35,21 +33,18 @@ if (isset($_POST['entrar'])) {
 </head>
 
 <body>
-    <?php
-        include_once '../view/header.php';
-    ?>
+    <?php include_once '../view/header.php'; ?>
+
     <div class="container">
         <div class="card">
             <h3>Login Funcionários</h3>
             <form action="loginFunc.php" method="POST">
-                <label for="email">
-                    Email
-                    <input type="text" name="email" required>
-                    </label>
-                    <label for="senha">
-                        Senha
-                        <input type="text" name="senha" required>
-                    </label>
+                <label for="email">Email
+                <input type="text" name="email" required>
+                </label>
+                <label for="senha">Senha
+                    <input type="text" name="senha" required>
+                </label>
                 <input type="submit" value="Entrar" class="btn" name="entrar">
             </form>
 
@@ -57,9 +52,7 @@ if (isset($_POST['entrar'])) {
         </div>
     </div>
 
-    <?php
-        include_once '../view/footer.php';
-    ?>
+    <?php include_once '../view/footer.php'; ?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>

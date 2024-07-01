@@ -19,20 +19,24 @@ body {
     padding-top: 20px;
 }
 
-.btn {
+.container .card form label{
+    color: #5f988c;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.9rem;
+}
+
+.container .card form .btn {
     background-color: #DF696E; /* Cor do botão rosa mais escuro */
     margin-bottom: 15px;
 }
 
-.btn:hover {
+.container .card form .btn:hover {
     background-color: #D6656B; /* Cor do botão rosa mais escura ao passar o mouse */
 }
 
-.mensagem-erro {
-    color: red;
-}
-
-.redirect {
+.card .redirect {
     box-shadow: 1px 2px 6px #0000007d !important;
     margin: auto;
     display: inline-block;

@@ -29,13 +29,13 @@ if(isset($_POST['btnAlterar'])){
         $tamanho = 2048000;
         $error = array();
 
-        if(!preg_match("/^image\/(jpg|jpeg|png|bmp)$/", $foto["type"])){ // Verifica se o tipo de arquivo enviado é uma imagem válida (JPEG, PNG, ou BMP).
+        if(!preg_match("/^image\/(jpg|jpeg|png|bmp)$/", $foto["type"])){
             $error[0] = "Isso não é uma imagem."; 
         } 
     
-        $dimensoes = getimagesize($foto["tmp_name"]); // Obtém as dimensões (largura e altura) da imagem enviada.
+        $dimensoes = getimagesize($foto["tmp_name"]);
     
-        if($dimensoes[0] > $largura) { // Verifica se a largura da imagem excede a largura máxima permitida.
+        if($dimensoes[0] > $largura) {
             $error[1] = "A largura da imagem não deve ultrapassar ".$largura." pixels"; 
         }
 
@@ -44,40 +44,33 @@ if(isset($_POST['btnAlterar'])){
         }
         
         if($foto["size"] > $tamanho) {
-
             $error[3] = "A imagem deve ter no máximo ".$tamanho." bytes";
         }
 
         if (count($error) == 0) {
-        // Verifica se não houve erros durante a validação da imagem.
+            preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext); 
 
-            preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext); // Extrai a extensão do nome do arquivo usando uma expressão regular e armazena-a na variável $ext.
+            $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
 
-            $nome_imagem = md5(uniqid(time())) . "." . $ext[1]; // Gera um nome único para a imagem usando o tempo atual e a extensão extraída, e o armazena na variável $nome_imagem.
+            $caminho_imagem = "../imagens/" . $nome_imagem;
 
-            $caminho_imagem = "../imagens/" . $nome_imagem; // Define o caminho onde a imagem será salva, concatenando o diretório "fotos/" com o nome da imagem.
+            move_uploaded_file($foto["tmp_name"], $caminho_imagem); 
 
-            move_uploaded_file($foto["tmp_name"], $caminho_imagem); // Move o arquivo enviado para o caminho especificado.        
-            
             $result = $consulta->updateEmployeeDatas($nome,$senha,$email,$cargo,$usuario,$nome_imagem,$id);
 
             if($result == TRUE){
-                //Variável session atribuida com true caso queira checar nas outras páginas 
-                //se o funcionario se logou antes de acessar elas.
                 $_SESSION['funcLogged'] = TRUE;
                 header('Location:produtos.php');
             }
         
         }
 
-        $totalerro = ""; // Cria uma variável vazia para armazenar mensagens de erro.
+        $totalerro = "";
 
         if (count($error) != 0) {
-            // Verifica se houve algum erro durante a validação da imagem.
             $totalerro = "";
         
             for ($cont = 0; $cont < sizeof($error); $cont++) {
-                // Inicia um loop para percorrer o array de erros.
                 if (!empty($error[$cont])) {
                     $totalerro .= $error[$cont] . "\n";
                 }
@@ -92,10 +85,8 @@ if(isset($_POST['btnAlterar'])){
 }
 
 ?>
-
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -106,9 +97,8 @@ if(isset($_POST['btnAlterar'])){
     <title>Alterar Cliente</title>
 </head>
 <body>
-    <?php
-include_once './header.php';
-?>
+    <?php include_once './header.php'; ?>
+
     <h1>Alterar Dados - Funcionário</h1>
     <form action="alterarFunc.php" method="post" enctype="multipart/form-data" >
         <input type="hidden" name="id" value="<?php echo "{$linha['id']}"; ?>">
@@ -141,8 +131,6 @@ include_once './header.php';
         <input type="submit" value="Alterar" class="btn btn-primary" name="btnAlterar">
     </form>
 
-    <?php
-        include_once './footer.php';
-    ?>
+    <?php include_once './footer.php'; ?>
 </body>
 </html>

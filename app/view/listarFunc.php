@@ -20,7 +20,6 @@ if(isset($_POST['btnDelete'])){
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -29,11 +28,9 @@ if(isset($_POST['btnDelete'])){
     <link rel="stylesheet" href="./css/listarFunc.css">
     <title>Funcionários</title>
 </head>
-
 <body>
-    <?php
-        include_once '../view/header.php';
-    ?>
+    <?php include_once '../view/header.php'; ?>
+
     <main>
         <table class="striped">
             <thead>
@@ -68,21 +65,16 @@ if(isset($_POST['btnDelete'])){
                                 </form>
                             </td>
                         </tr>
-                    <?php    
-                        }
-                    ?>
+                    <?php } ?>
             </tbody>
         </table>
         <a href='insereFuncionario.php' class='btn'>Adicionar Funcionario</a>
     </main>
         
 
-    <?php
-        include_once './footer.php';
-    ?>
+    <?php include_once './footer.php'; ?>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
-
 </html>
