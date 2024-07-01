@@ -39,6 +39,7 @@ if((!isset($_SESSION['funcLogged']) && !isset($_SESSION['clientLogged'])) ||
                         <li><a href="index.php"><i class="material-icons">home</i></a></li>
                         <li><a href="carrinho.php"><i class="material-icons">shopping_cart</i></a></li>
                         <li><a href="produtos.php">Produtos</a></li>
+                        <li><a href="../controller/logoff.php">Sair</a></li>
                     </ul>
                     </div>
                 </nav>
