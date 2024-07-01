@@ -27,7 +27,7 @@ function mostrarProduto($produto)
                     <i class="small material-icons">local_grocery_store</i>
                 </a>
             </div>
-        </div>
+        </div> 
     </div>
     <?php
 }

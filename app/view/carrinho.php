@@ -2,29 +2,42 @@
 session_start();
 require_once '../controller/carrinhoController.php';
 include_once '../view/header.php';
+$carrinhoController = new CarrinhoController();
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="css/carrinhoEstilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="../view/css/carrinho.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="js/alteraQuantidade.js"></script>
+    <script>
+        function alteraQuantidade(produto_id, quantidade, operacao) {
+            var novaQuantidade = quantidade;
+
+            if (operacao === 'diminuir' && novaQuantidade > 1) {
+                novaQuantidade--;
+            } else if (operacao === 'aumentar') {
+                novaQuantidade++;
+            }
+
+            document.getElementById('quantidade-' + produto_id).value = novaQuantidade;
+            document.getElementById('form-' + produto_id).submit();
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h2 class="center-align">Carrinho de Compras</h2>
 
         <?php
-        $verificaCarrinho = new CarrinhoController();
-        if (isset($_POST['codigo'])) {
-            $verificaCarrinho->addItemCart($_POST['codigo']);
+
+        if (isset($_GET['codigo'])) {
+            $carrinhoController->addItemCart($_GET['codigo']);
         }
 
-        require_once '../config/database.php';
+        require_once '../../config/database.php';
         $database = new DataBase();
         $conn = $database->getConnection();
 
@@ -36,24 +49,33 @@ include_once '../view/header.php';
         ?>
 
         <ul class="collection">
-            <?php while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-                <li class="collection-item">
-                    <div>
-                        <span><?= htmlspecialchars($linha['descricao']) ?></span>
+            <?php 
+            if ($stmt->rowCount() > 0) {
+                while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <li class="collection-item">
+                        <div>
+                            <span><?= htmlspecialchars($linha['descricao']) ?></span>
 
-                        <form id="form-<?= $linha['produto_id'] ?>" method="POST" action="atualizaQuantidade.php" style="display:inline;">
-                            <input type="hidden" name="produto_id" value="<?= $linha['produto_id'] ?>">
-                            <input type="hidden" id="quantidade-<?= $linha['produto_id'] ?>" name="quantidade" value="<?= $linha['quantidade'] ?>">
-                            <span class="secondary-content" style="cursor: pointer;" onclick="alteraQuantidade(<?= $linha['produto_id'] ?>, <?= $linha['quantidade'] ?>, 'diminuir')"> - </span>
-                            <span class="secondary-content" style="cursor: pointer;" onclick="alteraQuantidade(<?= $linha['produto_id'] ?>, <?= $linha['quantidade'] ?>, 'aumentar')"> + </span>
-                        </form>
-                        
-                        <span class="secondary-content"><?= htmlspecialchars($linha['quantidade']) ?></span>
-                    </div>
-                </li>
-            <?php } ?>
+                            <form id="form-<?= $linha['produto_id'] ?>" method="POST" action="../_/atualizaQuantidade.php" style="display:inline;">
+                                <input type="hidden" name="action" value="changeQuantity">
+                                <input type="hidden" name="produto_id" value="<?= $linha['produto_id'] ?>">
+                                <span class="secondary-content" style="cursor: pointer;" onclick="alteraQuantidade(<?= $linha['produto_id'] ?>, <?= $linha['quantidade'] ?>, 'diminuir')"> - </span>
+                                <input type="hidden" id="quantidade-<?= $linha['produto_id'] ?>" name="quantidade" value="<?= $linha['quantidade'] ?>">
+                                <span class="secondary-content" style="cursor: pointer;" onclick="alteraQuantidade(<?= $linha['produto_id'] ?>, <?= $linha['quantidade'] ?>, 'aumentar')"> + </span>
+                                <a href="../controller/carrinhoExclueController.php?produto_id=<?= $linha['produto_id'] ?>" class="secondary-content"><i class="material-icons">delete</i></a>
+                            </form>
+                            
+                            <span class="secondary-content" id="quantidade-exibida-<?= $linha['produto_id'] ?>"><?= htmlspecialchars($linha['quantidade']) ?></span>
+                        </div>
+                    </li>
+                <?php } 
+            } else {
+                echo "<p class='center-align'>Seu carrinho está vazio.</p>";
+            } ?>
         </ul>
-        <a href="listaprodutos.php" class="center-align" id="comprarMais">Comprar mais</a>
+        <div class="row center-align">
+            <a href="produtos.php" class="btn" id="comprarMais">Comprar mais</a>
+        </div>
     </div>
 
     <?php include_once '../view/footer.php'; ?>

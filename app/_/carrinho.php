@@ -77,7 +77,9 @@ include_once "conexao.php";
                 </li>
             <?php } ?>
         </ul>
-        <a href="listaprodutos.php" class="center-align" id="comprarMais">Comprar mais</a>
+        <div class="row center-align">
+            <a href="listaprodutos.php" class="btn" id="comprarMais">Comprar mais</a>
+        </div>
     </div>
 
     <?php include_once '../view/footer.php'; ?>
