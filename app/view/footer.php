@@ -3,7 +3,7 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Preguicinha - ☁️
+                <h5 class="white-text">Preguicinha - 🦥
                 </h5>
                 <p class="grey-text text-lighten-4">Pelúcias para aumentar sua preguicinha de manhã</p>
               </div>
@@ -21,7 +21,7 @@
           <div class="footer-copyright">
             <div class="container">
             © 2024 Copyright Preguicinha
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <a class="grey-text text-lighten-4 right" href="#">More Links</a>
             </div>
           </div>
 </footer>

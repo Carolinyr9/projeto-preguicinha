@@ -1,0 +1,14 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-footer {
+    background-color: #EE6E73; /* Cor do footer */
+}
+
+main {
+    flex: 1 0 auto;
+}
