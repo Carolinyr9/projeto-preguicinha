@@ -18,10 +18,10 @@ class Database {
             }
         }
         
-        $this->host = getenv('CONN_HOST');
-        $this->db = getenv('CONN_DB');
-        $this->user = getenv('CONN_USER');
-        $this->pass = getenv('CONN_PASS');
+        $this->host = 'localhost';
+        $this->db = 'db_pelucias';
+        $this->user = 'root';
+        $this->pass = 'root';
         $this->charset = 'utf8mb4';
     }
 

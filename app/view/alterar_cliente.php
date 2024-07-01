@@ -21,7 +21,7 @@ if(isset($_POST['btnAlterar'])) {
     $result = $consulta->updateClientDatas($id,$nome,$senha,$email,$endereco,$cep);
 
     if($result == TRUE){
-        header('Location: listarCli.php');
+        header('Location: listar_clientes.php');
         exit;
     }
 }

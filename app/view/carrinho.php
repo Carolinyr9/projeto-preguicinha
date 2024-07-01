@@ -56,14 +56,15 @@ $carrinhoController = new CarrinhoController();
                         <div>
                             <span><?= htmlspecialchars($linha['descricao']) ?></span>
 
-                            <form id="form-<?= $linha['produto_id'] ?>" method="POST" action="../_/atualizaQuantidade.php" style="display:inline;">
+                            <form id="form-<?= $linha['produto_id'] ?>" method="POST" action="../controller/carrinhoQuantidadeController.php" style="display:inline;">
                                 <input type="hidden" name="action" value="changeQuantity">
                                 <input type="hidden" name="produto_id" value="<?= $linha['produto_id'] ?>">
                                 <span class="secondary-content" style="cursor: pointer;" onclick="alteraQuantidade(<?= $linha['produto_id'] ?>, <?= $linha['quantidade'] ?>, 'diminuir')"> - </span>
                                 <input type="hidden" id="quantidade-<?= $linha['produto_id'] ?>" name="quantidade" value="<?= $linha['quantidade'] ?>">
                                 <span class="secondary-content" style="cursor: pointer;" onclick="alteraQuantidade(<?= $linha['produto_id'] ?>, <?= $linha['quantidade'] ?>, 'aumentar')"> + </span>
-                                <a href="../controller/carrinhoExclueController.php?produto_id=<?= $linha['produto_id'] ?>" class="secondary-content"><i class="material-icons">delete</i></a>
+                                
                             </form>
+                            <a href="../controller/carrinhoExclueController.php?id=<?= $linha['produto_id'] ?>" class="secondary-content"><i class="material-icons">delete</i></a>
                             
                             <span class="secondary-content" id="quantidade-exibida-<?= $linha['produto_id'] ?>"><?= htmlspecialchars($linha['quantidade']) ?></span>
                         </div>

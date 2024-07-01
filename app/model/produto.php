@@ -8,7 +8,7 @@ class Produto{
     private $conn;
 
     public function __construct(){
-        $database = new Database;
+        $database = new DataBase;
         $this->conn = $database->getConnection();
     }
 

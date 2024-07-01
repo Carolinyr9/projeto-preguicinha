@@ -27,10 +27,7 @@ class Carrinho {
             $stmt->bindParam(':produto_id', $produto_id);
         }
 
-        if ($stmt->execute()) {
-            header('Location: carrinho.php');
-            exit();
-        } else {
+        if (!$stmt->execute()) {
             echo "Erro ao atualizar a quantidade";
         }
     }
@@ -61,12 +58,11 @@ class Carrinho {
 
     public function deleteProductCart($id) {
         try {
-            $stmt = $this->conn->prepare("DELETE FROM carrinho_compras WHERE id = ?");
+            $stmt = $this->conn->prepare("DELETE FROM carrinho_compras WHERE produto_id = ?");
             $stmt->bindValue(1, $id, PDO::PARAM_INT);
             if ($stmt->execute()) {
                 return true;
             } else {
-                // Adicione mensagens de depuração aqui
                 echo "Erro ao executar a query: ";
                 print_r($stmt->errorInfo());
                 return false;
