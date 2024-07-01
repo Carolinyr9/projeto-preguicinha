@@ -20,8 +20,10 @@ CREATE TABLE IF NOT EXISTS funcionarios (
   email VARCHAR(50) NOT NULL,
   cargo VARCHAR(20) NOT NULL,
   usuario VARCHAR(10) NOT NULL,
-  foto VARCHAR(18) NOT NULL
+  foto VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+alter table funcionarios modify foto VARCHAR(255) NOT NULL;
 
 -- Dados iniciais para a tabela de funcionários
 INSERT INTO funcionarios (id, nome, senha, email, cargo, usuario, foto) VALUES
@@ -38,12 +40,12 @@ CREATE TABLE IF NOT EXISTS produtos (
 
 -- Dados iniciais para a tabela de produtos
 INSERT INTO produtos (id, descricao, imagem, preco) VALUES
-(1, 'Pelúcia Ursinho', 'ursinho', 25.99),
-(2, 'Pelúcia Coelhinho', 'coelho', 19.99),
-(3, 'Pelúcia Carneirinho', 'carneiro', 29.99),
-(4, 'Pelúcia Leãozinho', 'leao', 22.50),
-(5, 'Pelúcia Elefantinho', 'elefante', 27.99),
-(6, 'Pelúcia Girafinha', 'girafa', 32.99);
+(1, 'Pelúcia Ursinho', 'ursinho.webp', 25.99),
+(2, 'Pelúcia Coelhinho', 'coelho.webp', 19.99),
+(3, 'Pelúcia Carneirinho', 'carneiro.webp', 29.99),
+(4, 'Pelúcia Leãozinho', 'leao.webp', 22.50),
+(5, 'Pelúcia Elefantinho', 'elefante.webp', 27.99),
+(6, 'Pelúcia Girafinha', 'girafa.webp', 32.99);
 
 -- Tabela de itens no carrinho de compras
 CREATE TABLE IF NOT EXISTS carrinho_compras (

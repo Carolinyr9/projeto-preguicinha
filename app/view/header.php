@@ -22,7 +22,7 @@ if((!isset($_SESSION['funcLogged']) && !isset($_SESSION['clientLogged'])) ||
                 <a href="#" class="brand-logo">  🦥 Preguicinha</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="index.php"><i class="material-icons">home</i></a></li>
-                     <li><a href="produtos.php">Produtos</a></li>
+                     <li><a href="listarProdutos.php">Produtos</a></li>
                     <li><a href="listarCli.php">Cliente</a></li>
                     <li><a href="listarFunc.php">Funcionário</a></li>
                     <li><a href="../controller/logoff.php">Sair</a></li>

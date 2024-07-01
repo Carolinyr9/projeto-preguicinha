@@ -5,10 +5,10 @@ require_once '../controller/produtoController.php';
 $registro = new ProdutoController();
 
 if(isset($_POST['btncadastrar'])){
-    if(!empty($_POST['txtdescricao']) && !empty($_POST['txtpreco']) && !empty($_POST['fileimagem'])){
+    if(!empty($_POST['txtdescricao']) && !empty($_POST['txtpreco']) && !empty($_FILES['fileimagem'])){
         $descricao = $_POST['txtdescricao'];
         $preco = $_POST['txtpreco'];
-        $foto = $_POST['fileimagem'];
+        $foto = $_FILES['fileimagem'];
 
         $largura = 1500;
         $altura = 1800; 
@@ -45,7 +45,7 @@ if(isset($_POST['btncadastrar'])){
 
             move_uploaded_file($foto["tmp_name"], $caminho_imagem); // Move o arquivo enviado para o caminho especificado.        
             
-            $registro->registerProduct($descricao,$foto,$preco);
+            $registro->registerProduct($descricao,$nome_imagem,$preco);
             header('Location:listarProdutos.php');
         
         }
@@ -72,7 +72,6 @@ if(isset($_POST['btncadastrar'])){
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -80,14 +79,13 @@ if(isset($_POST['btncadastrar'])){
     <title>Cadastro de Produtos</title>
     <link rel="stylesheet" href="./css/formCli.css">
 </head>
-
 <body>
-<?php
-include_once './header.php';
-?>
+    <?php
+    include_once './header.php';
+    ?>
     <div class="container">
          <h3 class="light">Cadastro de Produtos</h3>
-         <form action="form_cad_produtos.php" method="POST">
+         <form action="form_cad_produtos.php" method="POST" enctype="multipart/form-data">
             <label>Descrição: 
                 <input type="text" name="txtdescricao">
             </label>
