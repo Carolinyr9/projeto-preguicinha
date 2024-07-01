@@ -35,19 +35,32 @@ form {
 }
 
 form label {
-    color: #DF696E; /* Cor do texto rosa mais escuro */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: #DF696E;
+}
+
+form span{
+    font-size: 0.8rem;
+    color: #6c2427;
 }
 
 form input {
-    border: 1px solid #DF696E; /* Cor da borda rosa mais escuro */
+    border: 1px solid #DF696E;
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
+form input[type=file]{
+    margin: auto;
+}
+
 form button {
-    background-color: #DF696E; /* Cor do botão rosa mais escuro */
+    background-color: #DF696E;
 }
 
 form button:hover {
-    background-color: #D6656B; /* Cor do botão rosa mais escura ao passar o mouse */
+    background-color: #D6656B;
 }
