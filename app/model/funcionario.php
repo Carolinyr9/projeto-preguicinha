@@ -2,6 +2,12 @@
     require_once '../../config/database.php';
 
     class Funcionario{
+        private $nome;
+        private $senha;
+        private $email;
+        private $cargo;
+        private $usuario;
+        private $foto;
         private $conn;
 
         public function __construct(){
