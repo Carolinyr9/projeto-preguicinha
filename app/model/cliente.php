@@ -9,14 +9,12 @@
         private $cep;
         private $conn;
 
-        private function getConnectionDataBase() {
+        public function __construct(){
             $database = new DataBase;
             $this->conn = $database->getConnection();
-            
         }
 
         public function loginClient($email,$senha) {
-            $this->getConnectionDataBase();
             try{
                 $login = $this->conn->prepare('SELECT * FROM clientes WHERE email = ? AND senha = ?');
                 $login->bindParam(1, $email);
@@ -34,7 +32,6 @@
         }
 
         public function getAllClientData(){
-            $this->getConnectionDataBase();
             try{
                 $consulta = $this->conn->prepare('SELECT * FROM clientes');
                 $consulta->execute();
@@ -45,7 +42,6 @@
         }
 
         public function registerClient($nome,$senha,$email,$endereco,$cep) {
-            $this->getConnectionDataBase();
             try{
                 $register = $this->conn->prepare("INSERT into clientes (nome, senha, email, endereco, cep) VALUES (?,?,?,?,?)");
                 $register->bindValue(1, $nome);
@@ -60,7 +56,6 @@
         }
 
         public function getClientDadaById($id) {
-            $this->getConnectionDataBase();
             try{
                 $consulta = $this->conn->prepare('SELECT * FROM clientes WHERE id = ?');
                 $consulta->bindValue(1, $id);
@@ -72,7 +67,6 @@
         }
 
         public function updateClientDatas($id,$nome,$senha,$email,$endereco,$cep) {
-            $this->getConnectionDataBase();
             try{
                 $register = $this->conn->prepare("UPDATE clientes SET nome= ? , senha= ? , email= ? , endereco= ? , cep= ?  WHERE id = ?");
                 $register->bindValue(1, $nome);
@@ -89,7 +83,6 @@
         }
 
         public function deleteClientDatas($id){
-            $this->getConnectionDataBase();
             try{
                 $delete = $this->conn->prepare("DELETE FROM clientes WHERE id = ?");
                 $delete->bindValue(1, $id);
