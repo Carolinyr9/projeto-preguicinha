@@ -97,7 +97,7 @@ INSERT INTO `funcionarios` (`id`, `nome`, `senha`, `email`, `cargo`, `usuario`, 
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
-  `imagem` varchar(30) NOT NULL,
+  `imagem` varchar(255) NOT NULL,
   `preco` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
