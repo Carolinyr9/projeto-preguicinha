@@ -51,7 +51,7 @@ if(isset($_POST['entrar'])) {
                 <input type="submit" value="Entrar" class="btn" name="entrar">
             </form>
 
-            <a href="insereFuncionario.php" class="redirect">Registre-se!</a>
+            <a href="form_cad_clientes.php" class="redirect">Registre-se!</a>
         </div>
     </div>
 
