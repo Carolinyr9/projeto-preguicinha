@@ -29,7 +29,7 @@ if(isset($_POST['btnAlterar'])){
         $tamanho = 2048000;
         $error = array();
 
-        if(!preg_match("/^image\/(jpg|jpeg|png|bmp)$/", $foto["type"])){
+        if(!preg_match("/^image\/(jpg|jpeg|png|bmp|webp)$/", $foto["type"])){
             $error[0] = "Isso não é uma imagem."; 
         } 
     
@@ -48,7 +48,7 @@ if(isset($_POST['btnAlterar'])){
         }
 
         if (count($error) == 0) {
-            preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext); 
+            preg_match("/\.(gif|bmp|png|jpg|jpeg|webp){1}$/i", $foto["name"], $ext); 
 
             $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
 

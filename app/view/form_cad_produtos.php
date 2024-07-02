@@ -15,7 +15,7 @@ if(isset($_POST['btncadastrar'])){
         $tamanho = 2048000;
         $error = array();
 
-        if(!preg_match("/^image\/(jpg|jpeg|png|bmp)$/", $foto["type"])){ // Verifica se o tipo de arquivo enviado é uma imagem válida (JPEG, PNG, ou BMP).
+        if(!preg_match("/^image\/(jpg|jpeg|png|bmp|webp)$/", $foto["type"])){ // Verifica se o tipo de arquivo enviado é uma imagem válida (JPEG, PNG, ou BMP).
             $error[0] = "Isso não é uma imagem."; 
         } 
     
@@ -37,7 +37,7 @@ if(isset($_POST['btncadastrar'])){
         if (count($error) == 0) {
         // Verifica se não houve erros durante a validação da imagem.
 
-            preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext); // Extrai a extensão do nome do arquivo usando uma expressão regular e armazena-a na variável $ext.
+            preg_match("/\.(gif|bmp|png|jpg|jpeg|webp){1}$/i", $foto["name"], $ext); // Extrai a extensão do nome do arquivo usando uma expressão regular e armazena-a na variável $ext.
 
             $nome_imagem = md5(uniqid(time())) . "." . $ext[1]; // Gera um nome único para a imagem usando o tempo atual e a extensão extraída, e o armazena na variável $nome_imagem.
 
