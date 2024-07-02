@@ -22,7 +22,7 @@ Essas funcionalidades combinadas oferecem uma solução abrangente para a gestã
 
 ![HTML](https://img.shields.io/badge/HTML-DD4B25?style=for-the-badge&logo=html5&logoColor=white)
 
-![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-254BDD?&style=for-the-badge&logo=css3&logoColor=white)
 
 ![Materialize](https://img.shields.io/badge/Materialize-EC767D?style=for-the-badge&logo=materialize&logoColor=white)
 
