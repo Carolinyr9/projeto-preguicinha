@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../controller/funcionarioController.php';
+require_once '../controller/picture.php';
 
 if((isset($_SESSION['funcLogged']) && $_SESSION['funcLogged'] != TRUE) || !isset($_SESSION['funcLogged'])){
     echo '<script>alert("Você não tem permissão para acessar essa página!"); window.location.href = "produtos.php";</script>';
@@ -24,59 +25,20 @@ if(isset($_POST['btnAlterar'])){
         $senha = $_POST['senha'];
         $id = $_POST['id'];
         
-        $largura = 1500;
-        $altura = 1800; 
-        $tamanho = 2048000;
-        $error = array();
+        $pictureController = new Picture($foto);
+        $nome_imagem = $pictureController->validatePicture();
 
-        if(!preg_match("/^image\/(jpg|jpeg|png|bmp|webp)$/", $foto["type"])){
-            $error[0] = "Isso não é uma imagem."; 
-        } 
-    
-        $dimensoes = getimagesize($foto["tmp_name"]);
-    
-        if($dimensoes[0] > $largura) {
-            $error[1] = "A largura da imagem não deve ultrapassar ".$largura." pixels"; 
-        }
-
-        if($dimensoes[1] > $altura) {
-            $error[2] = "Altura da imagem não deve ultrapassar ".$altura." pixels"; 
-        }
-        
-        if($foto["size"] > $tamanho) {
-            $error[3] = "A imagem deve ter no máximo ".$tamanho." bytes";
-        }
-
-        if (count($error) == 0) {
-            preg_match("/\.(gif|bmp|png|jpg|jpeg|webp){1}$/i", $foto["name"], $ext); 
-
-            $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
-
-            $caminho_imagem = "../imagens/" . $nome_imagem;
-
-            move_uploaded_file($foto["tmp_name"], $caminho_imagem); 
-
+        if($nome_imagem){
             $result = $consulta->updateEmployeeDatas($nome,$senha,$email,$cargo,$usuario,$nome_imagem,$id);
-
             if($result == TRUE){
                 $_SESSION['funcLogged'] = TRUE;
                 header('Location:produtos.php');
             }
-        
         }
-
-        $totalerro = "";
-
-        if (count($error) != 0) {
-            $totalerro = "";
-        
-            for ($cont = 0; $cont < sizeof($error); $cont++) {
-                if (!empty($error[$cont])) {
-                    $totalerro .= $error[$cont] . "\n";
-                }
-            }
-        
-            echo '<script>window.alert("' . $totalerro . '"); window.location="insereFuncionario.php";</script>';
+        else
+        {
+            $totalerros = $pictureController->countErrors();
+            echo '<script>window.alert("' . $totalerros . '"); window.location="insereFuncionario.php";</script>';
         }
     }
      
