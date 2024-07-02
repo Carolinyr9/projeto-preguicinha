@@ -1,17 +1,17 @@
 <?php
 session_start();
 require_once '../controller/produtoController.php';
+require_once 'produtoView.php';
 
 if((isset($_SESSION['funcLogged']) && $_SESSION['funcLogged'] != TRUE) || !isset($_SESSION['funcLogged'])){
     echo '<script>alert("Você não tem permissão para acessar essa página!"); window.location.href = "produtos.php";</script>';
 }
 
-$consulta = new ProdutoController();
-$dados = $consulta->getAllProducts();
-
 if(isset($_POST['btnDelete'])){
     if(isset($_POST['id'])){
         $id = $_POST['id'];
+
+        $consulta = new ProdutoController();
         $resultado = $consulta->deleteProduct($id);
 
         if($resultado == TRUE){
@@ -48,28 +48,7 @@ if(isset($_POST['btnDelete'])){
             </thead>
             <tbody>
                 <?php
-                    while ($linha = $dados->fetch(PDO::FETCH_ASSOC)) { 
-                ?>
-                    <tr>
-                        <td><?php echo $linha['id']?></td>
-                        <td><?php echo $linha['descricao']?></td>
-                        <td><img src="../imagens/<?php echo $linha['imagem'] ?>" alt="Imagem"></td>
-                        <td><?php echo $linha['preco']?></td>
-                        <td>
-                            <form action="alterarProduto.php" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $linha['id']?>">
-                                <button type="submit" name="btnEdit" class="btn-floating waves-effect waves-light blue"><i class="material-icons">edit</i></button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="listarProdutos.php" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $linha['id']?>"></input>
-                                <button type="submit" class='btn-floating blue' name="btnDelete"><i class="material-icons">delete</i></button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php
-                    }
+                    listarProdutos();
                 ?>
             </tbody>
        </table>
