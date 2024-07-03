@@ -1,0 +1,39 @@
+body{
+    background-color: #fce4ec; 
+}
+
+h1 {
+    margin: 20px 0;
+    color: #EE6E73; 
+}
+
+img {
+    width: 100%;
+    max-width: 150px; 
+    height: auto;
+}
+
+main{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+main table {
+    background-color: #FFA5AA; 
+    width: 70%;
+    text-align: center;
+    margin:50px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table th,
+table td {
+    color: #DF696E; 
+}
+
+.btn{
+    margin-bottom: 30px;
+}

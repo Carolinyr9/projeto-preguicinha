@@ -1,0 +1,21 @@
+h3{
+    color: white;
+}
+
+body {
+    background-color: #fce4ec;
+}
+
+main{
+    width: 80%;
+    margin: 40px auto;
+}
+
+.btn{
+    margin-top: 20px;
+}
+
+img {
+    max-width: 250px;
+    max-height: 250px;
+}
