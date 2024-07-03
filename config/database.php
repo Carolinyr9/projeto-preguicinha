@@ -21,7 +21,7 @@ class Database {
         $this->host = 'localhost';
         $this->db = 'db_pelucias';
         $this->user = 'root';
-        $this->pass = 'root';
+        $this->pass = '';
         $this->charset = 'utf8mb4';
     }
 
